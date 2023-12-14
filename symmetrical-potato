@@ -1,0 +1,15 @@
+        return newState
+    }
+    
+    private mutating func onRotate(_ gestureState: GestureType.GestureState<CGFloat>,
+                                   in state: AppState) -> AppState {
+        
+        guard state.editMode == .preview else {
+            return state
+        }
+        
+        var newState = state
+        newState.collage = elementsTransformer.rotate(
+            gestureState,
+            in: state.collage
+        )
